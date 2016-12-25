@@ -1,0 +1,102 @@
+
+pricer_homepage:
+    path:     /
+    defaults: { _controller: PricerBundle:Main:index }
+
+pricer_user_login:
+    path:     /user/login
+    defaults: { _controller: PricerBundle:Security:login }
+
+pricer_user_registration:
+    path:     /user/registration
+    defaults: { _controller: PricerBundle:Security:registration }
+
+pricer_user_logout:
+    path:     /logout
+
+pricer_supplier:
+    path:     /supplier
+    defaults: { _controller: PricerBundle:Supplier:index }
+
+pricer_showSupplier:
+    path:     /supplier/show/{supplierId}
+    defaults: { _controller: PricerBundle:Supplier:showSupplier, supplierId: all }
+    requirements:
+        supplierId: \d+
+
+pricer_addSupplier:
+    path:     /supplier/add
+    defaults: { _controller: PricerBundle:Supplier:add }
+
+pricer_showAllPriceList:
+    path:     /pricelist/show/{supplierId}
+    defaults: { _controller: PricerBundle:PriceList:showPriceList }
+    requirements:
+        supplierId: \d+
+
+pricer_addPriceList:
+    path:     /pricelist/add/{supplierId}
+    defaults: { _controller: PricerBundle:PriceList:addPriceList }
+    requirements:
+        supplierId: \d+
+
+pricer_updatePriceList:
+    path:     /pricelist/update/{priceListId}
+    defaults: { _controller: PricerBundle:PriceList:updatePriceList }
+    requirements:
+        priceListId: \d+
+
+pricer_loadPriceList:
+    path:     /pricelist/load/{priceListId}
+    defaults: { _controller: PricerBundle:PriceList:loadPriceList }
+    requirements:
+        priceListId: \d+
+
+pricer_handlePriceList:
+    path:     /pricelist/handle/{priceListId}
+    defaults: { _controller: PricerBundle:PriceList:handlePriceList }
+    requirements:
+        priceListId: \d+
+
+pricer_download_readyPriceList:
+    path:   /pricelist/handle/download/{priceListId}
+    defaults: { _controller: PricerBundle:PriceList:downLoadReadyPriceList }
+    requirements:
+        priceListId: \d+
+
+pricer_save_marginrates:
+    path:   /pricelist/marginrate/save
+    defaults: { _controller: PricerBundle:PriceList:saveMarginRates }
+
+
+pricer_ruler:
+    path:     /ruler/{priceListId}
+    defaults: { _controller: PricerBundle:Ruler:index }
+    requirements:
+        priceListId: \d+
+
+pricer_ruler_brand_add:
+    path:     /ruler/brand/add/{priceListId}
+    defaults: { _controller: PricerBundle:Ruler:addBrandRuler }
+    requirements:
+        priceListId: \d+
+
+pricer_ruler_brand_show:
+    path:     /ruler/brand/{priceListId}
+    defaults: { _controller: PricerBundle:Ruler:showBrandRulers }
+    requirements:
+        priceListId: \d+
+
+pricer_ruler_vendorCode_show:
+    path:     /ruler/vendorcode/{priceListId}
+    defaults: { _controller: PricerBundle:Ruler:showVendorCodeRuler }
+    requirements:
+        priceListId: \d+
+
+pricer_ruler_vendorCode_add:
+    path:     /ruler/vendorcode/add/{priceListId}
+    defaults: { _controller: PricerBundle:Ruler:addVendorCodeRuler }
+    requirements:
+        priceListId: \d+
+
+

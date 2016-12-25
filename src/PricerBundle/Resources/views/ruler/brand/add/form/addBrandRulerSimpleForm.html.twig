@@ -1,0 +1,10 @@
+{% extends '@Pricer/ruler/brand/add/addBrandRuler.html.twig' %}
+
+{% block actionPanel %}
+    {% if errors['ruler'] is defined %}
+        <div class="label label-danger">{{ errors['ruler'] }}</div>
+    {% endif %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}

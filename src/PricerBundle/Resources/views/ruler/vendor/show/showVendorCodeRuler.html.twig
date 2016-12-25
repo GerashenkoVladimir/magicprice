@@ -1,0 +1,10 @@
+{% extends '@Pricer/ruler/index.html.twig' %}
+
+{% block actionPanel %}
+    <h1>Правила для артикулов для поставщика {{ priceList.supplier.name }}</h1>
+    <a class="btn btn-primary" href="{{ path('pricer_ruler_vendorCode_add', {'priceListId': priceList.id}) }}">Добавить правило</a>
+    {% for vendorCodeRuler in vendorCodeRulers %}
+        <p>{{ vendorCodeRuler.brand.name }}: {{ vendorCodeRuler.ruler }} =&gt; "{{ vendorCodeRuler.replacement }}"</p>
+    {% endfor %}
+
+{% endblock %}

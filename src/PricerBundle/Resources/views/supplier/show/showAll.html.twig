@@ -1,0 +1,49 @@
+{% extends '@Pricer/supplier/index.html.twig' %}
+
+{% block actionPanel %}
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                №п/п
+            </th>
+            <th>
+                Поставщик
+            </th>
+            <th>
+                Код поставщика
+            </th>
+            <th>
+                Валюта
+            </th>
+            <th>
+                Обменный курс
+            </th>
+            <th>
+                Наценка
+            </th>
+            <th>
+                Действия
+            </th>
+        </tr>
+        {% set counter = 1 %}
+        {% for supplier in suppliers %}
+            <tr>
+                <td>{{ counter }}</td>
+                <td><a href="{{ path('pricer_showSupplier', {'supplierId': supplier.id}) }}">{{ supplier.name }}</a>
+                </td>
+                <td>{{ supplier.code }}</td>
+                <td>{{ supplier.priceCurrency }}</td>
+                <td>{{ supplier.exchangeRate }}</td>
+                <td>{{ supplier.marginRate }}</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-warning btn-xs">Редактировать</button>
+                        <button type="button" class="btn btn-danger btn-xs supplier_remove">Удалить</button>
+                    </div>
+                </td>
+            </tr>
+            {% set counter = counter + 1 %}
+        {% endfor %}
+    </table>
+
+{% endblock %}

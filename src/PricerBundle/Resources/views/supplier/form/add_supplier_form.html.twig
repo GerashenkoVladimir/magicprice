@@ -1,0 +1,51 @@
+{% extends '@Pricer/supplier/index.html.twig' %}
+
+{% block actionPanel %}
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name, { 'attr':{'class': 'form-control'}} ) }}
+        {% if errors['name'] is defined %}
+            <div class="label label-danger">{{ errors['name'] }}</div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.code) }}
+        {{ form_widget(form.code, { 'attr':{'class': 'form-control'}} ) }}
+        {% if errors['code'] is defined %}
+            <div class="label label-danger">{{ errors['code'] }}</div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.priceCurrency) }}
+        {{ form_widget(form.priceCurrency, { 'attr':{'class': 'form-control'}} ) }}
+        {% if errors['priceCurrency'] is defined %}
+            <div class="label label-danger">{{ errors['priceCurrency'] }}</div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.exchangeRate) }}
+        {{ form_widget(form.exchangeRate, { 'attr':{'class': 'form-control'}} ) }}
+        {% if errors['exchangeRate'] is defined %}
+            <div class="label label-danger">{{ errors['exchangeRate'] }}</div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.marginRate) }}
+        {{ form_widget(form.marginRate, { 'attr':{'class': 'form-control'}} ) }}
+        {% if errors['marginRate'] is defined %}
+            <div class="label label-danger">{{ errors['marginRate'] }}</div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(form.submit, { 'attr':{'class': 'btn btn-success'}} ) }}
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

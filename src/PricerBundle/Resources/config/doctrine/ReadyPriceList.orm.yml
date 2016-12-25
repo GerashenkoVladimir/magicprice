@@ -1,0 +1,63 @@
+PricerBundle\Entity\ReadyPriceList:
+    type: entity
+    table: null
+    repositoryClass: PricerBundle\Repository\ReadyPriceListRepository
+#    uniqueConstraints:
+#        unique_vendoreCode_brand_priceList_user:
+#            columns: [ vendor_code, brand, priceList_id, user_id ]
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        vendorCode:
+            type: string
+            length: '128'
+        brand:
+            type: string
+            length: '128'
+        name:
+            type: string
+            length: '128'
+        description:
+            type: text
+            nullable: true
+        price:
+            type: float
+            nullable: false
+            options:
+                unsigned: true
+        quantity:
+            type: smallint
+            options:
+                unsigned: true
+    manyToOne:
+        user:
+            targetEntity: PricerBundle\Entity\User
+            inversedBy: readyPriceList
+            joinColumns:
+                user_id:
+                    referensedColumnName: id
+                    nullable: false
+                    options:
+                        unsigned: true
+        priceList:
+            targetEntity: PricerBundle\Entity\PriceList
+            inversedBy: readyPriceList
+            joinColumns:
+                priceList_id:
+                    referensedColumnName: id
+                    nullable: false
+                    options:
+                        unsigned: true
+    oneToOne:
+        originalPriceList:
+            targetEntity: PricerBundle\Entity\OriginalPriceList
+            inversedBy: readyPriceList
+            joinColumn:
+                name: originalPriceList_id
+                referencedColumnName: id
+                onDelete: SET NULL
+    lifecycleCallbacks: {  }

@@ -1,0 +1,17 @@
+{% extends 'PricerBundle::main_layout.html.twig' %}
+
+{% block content %}
+    <div class="col-xs-3">
+
+        {% block leftSidebar %}
+            <a class="btn btn-success" href="{{ path('pricer_showAllPriceList', { 'supplierId': supplier.id}) }}">Список всех прайслистов</a>
+        {% endblock %}
+    </div>
+
+    <div class="col-xs-9">
+        {% block actionPanel %}
+
+        {% endblock %}
+    </div>
+
+{% endblock %}

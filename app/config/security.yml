@@ -1,0 +1,43 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        pricer_user_provider:
+            entity:
+                class: PricerBundle\Entity\User
+                property: email
+    encoders:
+#        Symfony\Component\Security\Core\User\User: bcrypt
+        PricerBundle\Entity\User:
+            algorithm: bcrypt
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            http_basic: ~
+            provider: pricer_user_provider
+            logout:
+                path: /logout
+                target: /
+            form_login:
+                login_path: pricer_user_login
+                check_path: pricer_user_login
+                username_parameter: user_login_form[_username]
+                password_parameter: user_login_form[_password]
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        - { path: ^/user, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_USER }

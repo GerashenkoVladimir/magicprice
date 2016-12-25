@@ -1,0 +1,37 @@
+PricerBundle\Entity\VendorCodeRuler:
+    type: entity
+    table: null
+    repositoryClass: PricerBundle\Repository\VendorCodeRulerRepository
+    uniqueConstraints:
+        unique_ruler_brand:
+            columns: [ brand_id, ruler, supplier_id ]
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        ruler:
+            type: string
+            length: '128'
+        replacement:
+            type: string
+            length: '128'
+            nullable: true
+    manyToOne:
+        brand:
+            targetEntity: PricerBundle\Entity\Brand
+            inversedBy: vendorCodeRuler
+            joinColumns:
+                brand_id:
+                    referencedColumnName: id
+                    nullable: false
+        supplier:
+            targetEntity: PricerBundle\Entity\Supplier
+            inversedBy: vendorCodeRuler
+            joinColumns:
+                supplier_id:
+                    referencedColumnName: id
+                    nullable: false
+    lifecycleCallbacks: {  }

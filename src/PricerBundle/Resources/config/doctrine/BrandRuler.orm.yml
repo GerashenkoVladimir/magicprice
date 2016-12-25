@@ -1,0 +1,33 @@
+PricerBundle\Entity\BrandRuler:
+    type: entity
+    table: null
+    repositoryClass: PricerBundle\Repository\BrandRulerRepository
+    uniqueConstraints:
+        unique_ruler_brand:
+            columns: [ brand_id, ruler, supplier_id ]
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        ruler:
+            type: string
+            length: '128'
+    manyToOne:
+        brand:
+            targetEntity: PricerBundle\Entity\Brand
+            inversedBy: brandRuler
+            joinColumns:
+                brand_id:
+                    referencedColumnName: id
+                    nullable: false
+        supplier:
+            targetEntity: PricerBundle\Entity\Supplier
+            inversedBy: brandRuler
+            joinColumns:
+                supplier_id:
+                    referencedColumnName: id
+                    nullable: false
+    lifecycleCallbacks: {  }

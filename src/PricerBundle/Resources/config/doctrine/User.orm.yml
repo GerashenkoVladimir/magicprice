@@ -1,0 +1,109 @@
+PricerBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: PricerBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        username:
+            type: string
+            length: '25'
+            unique: true
+        password:
+            type: string
+            length: '64'
+        email:
+            type: string
+            length: '60'
+            unique: true
+        isActive:
+            name: is_active
+            type: boolean
+        tariffPlane:
+            type: string
+            length: 15
+            nullable: true
+        firstName:
+            name: first_name
+            type: string
+            length: 60
+            nullable: false
+        secondName:
+            name: second_name
+            type: string
+            length: 60
+            nullable: false
+        birthDate:
+            name: birth_date
+            type: date
+            nullable: false
+        phone:
+            type: string
+            length: 15
+            nullable: false
+        website:
+            type: string
+            length: 128
+            nullable: true
+        facebook:
+            type: string
+            length: 128
+            nullable: true
+        skype:
+            type: string
+            length: 60
+            nullable: true
+        viber:
+            type: string
+            length: 60
+            nullable: true
+        anotherMessenger:
+            name: another
+            type: string
+            length: 128
+            nullable: true
+        country:
+            type: string
+            length: 60
+            nullable: true
+        region:
+            type: string
+            length: 60
+            nullable: true
+        city:
+            type: string
+            length: 60
+            nullable: true
+        street:
+            type: string
+            length: 60
+            nullable: true
+        house:
+            type: string
+            length: 5
+            nullable: true
+        flat:
+            type: string
+            length: 5
+            nullable: true
+    oneToMany:
+        supplier:
+            targetEntity: PricerBundle\Entity\Supplier
+            mappedBy: user
+        priceList:
+            targetEntity: PricerBundle\Entity\PriceList
+            mappedBy: user
+        originalPriceList:
+            targetEntity: PricerBundle\Entity\OriginalPriceList
+            mappedBy: user
+        readyPriceList:
+            targetEntity: PricerBundle\Entity\ReadyPriceList
+            mappedBy: user
+        marginRate:
+            targetEntity: PricerBundle\Entity\MarginRate
+            mappedBy: user
+    lifecycleCallbacks: {  }

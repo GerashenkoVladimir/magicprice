@@ -1,0 +1,27 @@
+PricerBundle\Entity\MarginRate:
+    type: entity
+    table: null
+    repositoryClass: PricerBundle\Repository\MarginRateRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        fromPrice:
+            type: float
+        toPrice:
+            type: float
+        marginRate:
+            type: integer
+
+    manyToOne:
+        user:
+            targetEntity: PricerBundle\Entity\User
+            inversedBy: marginRate
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+                    nullable: false
+    lifecycleCallbacks: {  }

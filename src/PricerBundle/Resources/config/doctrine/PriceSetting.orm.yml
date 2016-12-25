@@ -1,0 +1,30 @@
+PricerBundle\Entity\PriceSetting:
+    type: entity
+    table: null
+    repositoryClass: PricerBundle\Repository\PriceSettingRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        settingKey:
+            type: string
+            length: '64'
+        settingValue:
+            type: string
+            length: '64'
+    manyToOne:
+        priceList:
+            targetEntity: PricerBundle\Entity\PriceList
+            inversedBy: priceSetting
+            joinColumns:
+                priceList_id:
+                    referencedColumnName: id
+                    options:
+                        unsigned: true
+                    nullable: false
+                    onDelete: CASCADE
+                    onUpdate: CASCADE
+    lifecycleCallbacks: {  }

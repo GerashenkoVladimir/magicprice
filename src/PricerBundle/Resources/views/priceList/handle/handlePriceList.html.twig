@@ -1,0 +1,52 @@
+{% extends '@Pricer/priceList/index.html.twig' %}
+
+{% block actionPanel %}
+    {#<button id="p_handle_price_list" class="btn btn-danger" type="button">Старт</button>#}
+    <button type="button" data-handleURL="{{ path('pricer_handlePriceList', {'priceListId': priceList.id}) }}" id="p_handle_price_list" class="btn btn-danger">
+        Старт
+    </button>
+    <a href="{{ path('pricer_download_readyPriceList', {'priceListId': priceList.id}) }}" class="btn btn-success">Скачать файл</a>
+    <div id="messageContent"></div>
+
+    <div id="p_margin_rates_container">
+        <div id="error_message"></div>
+        {% if marginRates|length > 0 %}
+            {% set counter = 0 %}
+            {% for marginRate in marginRates %}
+                <p id="p_margin_field_container_{{ counter }}" data-index="{{ counter }}">
+                    {% if counter == marginRates|length - 1 %}
+                        <button id="p_remove_button">-</button>
+                    {% endif %}
+                    от <span id="p_from_{{ counter }}">{{ marginRate.fromPrice }}</span> <label for="p_to_{{ counter }}">до</label>
+                    <input class="p_to_field" type="number" id="p_to_{{ counter }}" min="1" max="999999" value="{{ marginRate.toPrice }}" required="required">
+                    <input type="number" id="p_margin_rate_{{ counter }}" min="1" max="1000" required="required" value="{{ marginRate.marginRate }}">
+                    <label for="p_margin_rate_{{ counter }}">%</label>
+                    {% set counter = counter + 1 %}
+                    {% if counter == marginRates|length %}
+                        <button id="p_add_margin_field">+</button>
+                    {% endif %}
+                </p>
+
+            {% endfor %}
+        {% else %}
+            <p id="p_margin_field_container_0" data-index="0">
+                от 0 <label for="p_to_0">до</label>
+                <input class="p_to_field" type="number" id="p_to_0" min="1" max="999999" value="1" required="required">
+                <input type="number" id="p_margin_rate_0" min="1" max="1000" required="required">
+                <label for="p_margin_rate_0">%</label>
+                <button id="p_add_margin_field">+</button>
+            </p>
+        {% endif %}
+
+
+
+
+
+    </div>
+    <button id="p_save_button" data-url="{{ path('pricer_save_marginrates') }}">Сохранить</button>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ asset('bundles/pricer/pricer/js/priceList/handle.js') }}"></script>
+    <script src="{{ asset('bundles/pricer/pricer/js/priceList/marginRates.js') }}"></script>
+{% endblock %}

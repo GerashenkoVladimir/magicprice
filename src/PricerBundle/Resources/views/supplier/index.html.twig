@@ -1,0 +1,13 @@
+{% extends '@Pricer/main_layout.html.twig' %}
+{% block leftSideBar %}
+    <a id="supplier_show_all" class="btn btn-success" href="{{ path('pricer_showSupplier') }}">Список поставщиков</a>
+    <a id="supplier_add_button" class="btn btn-success" href="{{ path('pricer_addSupplier') }}">Добавить поставщика</a>
+{% endblock %}
+
+{% block actionPanel %}
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ asset('bundles/pricer/pricer/supplier/supplier.js') }}"></script>
+{% endblock %}

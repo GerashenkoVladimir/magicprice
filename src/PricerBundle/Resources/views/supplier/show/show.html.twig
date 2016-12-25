@@ -1,0 +1,15 @@
+{% extends '@Pricer/supplier/index.html.twig' %}
+
+{% block actionPanel %}
+    <div class="row">
+        <div>
+            <p><b>Наименование поставщика:</b> {{ supplier.name }}</p>
+            <p><b>Код поставщика:</b> {{ supplier.code }}</p>
+            <p><b>Валюта:</b> {{ supplier.priceCurrency }}</p>
+            <p><b>Обменный курс по отношению к евро:</b> {{ supplier.exchangeRate }}</p>
+            <p><b>Коэфициент наценки:</b> {{ supplier.marginRate }}</p>
+            <a href="{{ path('pricer_showAllPriceList', {'supplierId': supplier.id }) }}">Все прайслисты этого поставщика</a>
+            <a href="{{ path('pricer_addPriceList', { 'supplierId': supplier.id } ) }}">Добавить прайс лист</a>
+        </div>
+    </div>
+{% endblock %}

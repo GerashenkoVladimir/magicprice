@@ -1,0 +1,8 @@
+pricer:
+    resource: "@PricerBundle/Resources/config/routing.yml"
+    prefix:   /
+
+#price:
+#    resource: "@PriceBundle/Resources/config/routing.yml"
+#    prefix:   /
+

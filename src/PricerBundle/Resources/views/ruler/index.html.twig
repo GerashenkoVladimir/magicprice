@@ -1,0 +1,10 @@
+{% extends '@Pricer/main_layout.html.twig' %}
+
+{% block leftSideBar %}
+    <a class="btn btn-success" href="{{ path('pricer_ruler_brand_show', {'priceListId': priceList.id }) }}">Правила для брендов</a>
+    <a class="btn btn-success" href="{{ path('pricer_ruler_vendorCode_show', {'priceListId': priceList.id }) }} ">Правила для артикулов</a>
+{% endblock %}
+
+{% block actionPanel %}
+
+{% endblock %}

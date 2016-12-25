@@ -1,0 +1,13 @@
+{% extends '@Pricer/priceList/index.html.twig' %}
+
+{% block actionPanel %}
+    {% for priceList in priceLists %}
+        <div class="thumbnail">
+            <a href="{{ path('pricer_loadPriceList', {'priceListId': priceList.id}) }}">{{ priceList.name }}</a>
+            <a class="btn btn-warning btn-xs"
+               href="{{ path('pricer_updatePriceList', {'priceListId': priceList.id}) }}">Редактировать</a>
+            <a class="btn btn-success btn-xs"
+               href="{{ path('pricer_ruler', { 'priceListId': priceList.id }) }}">Правила</a>
+        </div>
+    {% endfor %}
+{% endblock %}

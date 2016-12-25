@@ -1,0 +1,23 @@
+PricerBundle\Entity\Brand:
+    type: entity
+    table: null
+    repositoryClass: PricerBundle\Repository\BrandRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '128'
+            unique: true
+    oneToMany:
+        brandRuler:
+            targetEntity: PricerBundle\Entity\BrandRuler
+            mappedBy: brand
+        vendorCodeRuler:
+            targetEntity: PricerBundle\Entity\VendorCodeRuler
+            mappedBy: brand
+    lifecycleCallbacks: {  }

@@ -1,0 +1,198 @@
+PricerBundle\Entity\Brand:
+    properties:
+        name:
+            - NotBlank:
+                messaage: "Поле не должно быть пустым!"
+            - Length:
+                min: 2
+                max: 50
+                minMessage: "Наименование бренда должно содержать {{ limit }} или более символов!"
+                maxMessage: "Наименование бренда должно содержать не более {{ limit }} символов!"
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [ name ]
+            message:  "Такой бренд уже существует!"
+
+PricerBundle\Entity\BrandRuler:
+    properties:
+        ruler:
+            - NotBlank:
+                message: "Поле не должно быть пустым!"
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [ brand, ruler, supplier ]
+            message:  "Такое правило уже существует!"
+            errorPath: ruler
+
+PricerBundle\Entity\MarginRate:
+    properties:
+        fromPrice:
+            - NotBlank:
+                message: "Заполните все поля!"
+            - Type:
+                type: float
+                message: "Введите корректное значение (например 10.15)!"
+        toPrice:
+            - NotBlank:
+                message: "Заполните все поля!"
+            - Type:
+                type: float
+                message: "Введите корректное значение (например 10.15)!"
+        marginRate:
+            - NotBlank:
+                message: "Заполните все поля!"
+            - Range:
+                min: 0
+                max: 100
+                minMessage: "Введите число больше {{ limit }}!"
+                maxMessage: "Введите число меньше {{ limit }}!"
+                invalidMessage: "Введите положительное число от 0 до 100!"
+
+PricerBundle\Entity\Supplier:
+    properties:
+        name:
+            - NotBlank:
+                message: "Поле не должно быть пустым!"
+            - Length:
+                min: 3
+                max: 50
+                minMessage: "Наименование поставщика должно содержать {{ limit }} или более символов!"
+                maxMessage: "Наименование поставщика должно содержать не более {{ limit }}  символов!"
+        code:
+            - NotBlank:
+                message: "Поле не должно быть пустым!"
+        priceCurrency:
+            - Currency:
+                message: "Проверьте правильность ввода валюты!"
+        exchangeRate:
+            - Type:
+                type: float
+                message: "Введите корректное значение (например 27.5)!"
+        marginRate:
+            - NotBlank:
+                message: "Введите положительное или отрицательное число от 0 до 100!"
+            - Range:
+                min: -100
+                max: 100
+                minMessage: "Введите число больше {{ limit }}!"
+                maxMessage: "Введите число меньше {{ limit }}!"
+                invalidMessage: "Введите положительное или отрицательное число от 0 до 100!"
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [ user, code ]
+            message:  "Такой код уже существует!"
+            errorPath: code
+
+PricerBundle\Entity\User:
+    properties:
+        username:
+            - NotBlank:
+                message: "Поле не должно быть пустым!"
+            - Length:
+                min: 8
+                max: 20
+                minMessage: "Логин должен содержать {{ limit }} или более символов!"
+                maxMessage: "Логин должен содержать не более {{ limit }}  символов!"
+        password:
+            - NotBlank:
+                message: "Поле не должно быть пустым!"
+            - Length:
+                min: 8
+                max: 20
+                minMessage: "Пароль должен содержать {{ limit }} или более символов!"
+                maxMessage: "Пароль должен содержать не более {{ limit }}  символов!"
+        email:
+            - NotBlank:
+                message: "Поле не должно быть пустым!"
+            - Email:
+                message: "Вы ввели не верный email! Введите email вида myemail@example.com!"
+#        isActive:
+#        tariffPlane:
+        firstName:
+            - NotBlank:
+                message: "Поле не должно быть пустым!"
+        secondName:
+            - NotBlank:
+                message: "Поле не должно быть пустым!"
+        birthDate:
+            - NotBlank:
+                message: "Поле не должно быть пустым!"
+            - Date: ~
+        phone:
+            - Regex:
+                pattern: '|^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$|'
+                message: "Введенный номер неверного формата! Введите номер в формате +98(765)4321098"
+        website:
+            - Url:
+                protocols: [ http, https ]
+                checkDNS: true
+                message: "Введенный вами URL не верный!"
+                dnsMessage: "Введенный вами URL не существует!"
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [ username ]
+            message: "Это имя пользователя уже занято!"
+            errorPath: username
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [ email ]
+            message: "Этот адрес электронной почты уже занят!"
+            errorPath: email
+#        facebook:
+#        skype:
+#        viber:
+#        anotherMessenger:
+#        country:
+#        region:
+#        city:
+#        street:
+#        house:
+#        flat:
+
+PricerBundle\Entity\OriginalPriceList:
+    properties:
+        vendorCode:
+            - NotBlank: ~
+        brand:
+            - NotBlank: ~
+        name:
+            - NotBlank: ~
+        price:
+            - NotBlank: ~
+        quantity:
+            - NotBlank: ~
+#    constraints:
+#        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+#            fields: [ vendorCode, brand, priceList, user ]
+#            message: "Такой товар уже есть в базе данных!"
+
+PricerBundle\Entity\PriceList:
+    properties:
+        name:
+            - NotBlank:
+                message: "Поле не должно быть пустым!"
+        code:
+            - NotBlank:
+                message: "Поле не должно быть пустым!"
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [ user, supplier, name ]
+            message: "Прайс лист с таким названием уже есть!"
+            errorPath: name
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [ user, supplier, code ]
+            message: "Прайс лист с таким кодом уже есть!"
+            errorPath: code
+
+PricerBundle\Entity\VendorCodeRuler:
+    properties:
+        ruler:
+            - NotBlank:
+                message: "Поле не должно быть пустым!"
+        replacement:
+            - NotBlank:
+                message: "Поле не должно быть пустым!"
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [ brand, ruler, supplier ]
+            message: "Такое правило уже есть!"
+            errorPath: ruler

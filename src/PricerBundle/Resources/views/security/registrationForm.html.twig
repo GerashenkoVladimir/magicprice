@@ -1,0 +1,178 @@
+{% extends '@Pricer/main_layout.html.twig' %}
+
+{% block content %}
+    {{ form_start(form) }}
+    <h1>Регистрационные данные</h1>
+    <div class="thumbnail">
+
+        <h2>Данные учетной записи</h2>
+
+        <div class="form-group">
+            {{ form_label(form.username) }}
+            {{ form_widget(form.username, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['username'] is defined %}
+                <div class="label label-danger">{{ errors['username'] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['email'] is defined %}
+                <div class="label label-danger">{{ errors['email'] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.password) }}
+            {{ form_widget(form.password, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['password'] is defined %}
+                <div class="label label-danger">{{ errors['password'] }}</div>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="thumbnail">
+
+        <h2>Личные данные</h2>
+
+        <div>
+            {{ form_label(form.firstName) }}
+            {{ form_widget(form.firstName, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['firstName'] is defined %}
+                <div class="label label-danger">{{ errors['firstName'] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.secondName) }}
+            {{ form_widget(form.secondName, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['secondName'] is defined %}
+                <div class="label label-danger">{{ errors['secondName'] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.birthDate) }}
+            {{ form_widget(form.birthDate, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['birthDate'] is defined %}
+                <div class="label label-danger">{{ errors['birthDate'] }}</div>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="thumbnail">
+        <h2>Контактные данные</h2>
+        <div class="form-group">
+            {{ form_label(form.phone) }}
+            {{ form_widget(form.phone, { 'attr': { 'class': 'form-control', 'placeholder': '+98(765)432 1098' }}) }}
+            {% if errors['phone'] is defined %}
+                <div class="label label-danger">{{ errors['phone'] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.website) }}
+            {{ form_widget(form.website, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['website'] is defined %}
+                <div class="label label-danger">{{ errors['website'] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.facebook) }}
+            {{ form_widget(form.facebook, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['facebook'] is defined %}
+                <div class="label label-danger">{{ errors['facebook'] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.skype) }}
+            {{ form_widget(form.skype, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['skype'] is defined %}
+                <div class="label label-danger">{{ errors['skype'] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.viber) }}
+            {{ form_widget(form.viber, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['viber'] is defined %}
+                <div class="label label-danger">{{ errors['viber'] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.anotherMessenger) }}
+            {{ form_widget(form.anotherMessenger, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['anotherMessenger'] is defined %}
+                <div class="label label-danger">{{ errors['anotherMessenger'] }}</div>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="thumbnail">
+
+        <h2>Адрес</h2>
+
+        <div class="form-group">
+            {{ form_label(form.country) }}
+            {{ form_widget(form.country, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['country'] is defined %}
+                <div class="label label-danger">{{ errors['country'] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.region) }}
+            {{ form_widget(form.region, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['region'] is defined %}
+                <div class="label label-danger">{{ errors['region'] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.city) }}
+            {{ form_widget(form.city, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['city'] is defined %}
+                <div class="label label-danger">{{ errors['city'] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.street) }}
+            {{ form_widget(form.street, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['street'] is defined %}
+                <div class="label label-danger">{{ errors['street'] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.house) }}
+            {{ form_widget(form.house, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['house'] is defined %}
+                <div class="label label-danger">{{ errors['house'] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.flat) }}
+            {{ form_widget(form.flat, { 'attr': { 'class': 'form-control' }}) }}
+            {% if errors['flat'] is defined %}
+                <div class="label label-danger">{{ errors['flat'] }}</div>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(form.submit, { 'attr': { 'class': 'btn btn-success' }}) }}
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

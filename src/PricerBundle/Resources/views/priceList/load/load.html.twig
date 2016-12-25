@@ -1,0 +1,43 @@
+{% extends '@Pricer/priceList/index.html.twig' %}
+
+{% block actionPanel %}
+    <button type="button" class="btn btn-warning" id="p_load_price_list"
+            data-loadURL="{{ path('pricer_loadPriceList', {'priceListId': priceList.id}) }}">Загрузить прайслист
+    </button>
+    <a  class="btn btn-primary" href="{{ path('pricer_handlePriceList', {'priceListId': priceList.id}) }}">Обработать прайслист</a>
+    <div id="testContent"></div>
+    <div>
+        <p>Название прайслиста: {{ priceList.name }}</p>
+        <p>Код: {{ priceList.code }}</p>
+        <p>Название файла: {{ priceList.filePath }}</p>
+        <dl>
+            <dt>Начальная колонка:</dt>
+            <dd> {{ settings['startColumn'] }}</dd>
+            <dt>Конечная колонка:</dt>
+            <dd>{{ settings['endColumn'] }}</dd>
+            <dt>Строка начала считывания:</dt>
+            <dd>{{ settings['startRow'] }}</dd>
+            <dt>Колонка с артикулом:</dt>
+            <dd>{{ settings['codeColumn'] }}</dd>
+            <dt>Вспомогательная колонка с артикулом:</dt>
+            <dd>{{ settings['secondaryCodeColumn'] }}</dd>
+            <dt>Колонка с брендом:</dt>
+            <dd>{{ settings['brandColumn'] }}</dd>
+            <dt>Колонка с наименованием</dt>
+            <dd>{{ settings['nameColumn'] }}</dd>
+            <dt>Колонка с ценой:</dt>
+            <dd>{{ settings['priceColumn'] }}</dd>
+            <dt>Колонки с количеством(через запятую):</dt>
+            <dd>{{ settings['quantityColumn'] }}</dd>
+            <dt>Валюта прайса:</dt>
+            <dd>{{ settings['currency'] }}</dd>
+            <dt>Обменный курс по отношению к EUR:</dt>
+            <dd>{{ settings['exchangeRate'] }}</dd>
+        </dl>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ asset('bundles/pricer/pricer/js/priceList/load.js') }}"></script>
+{% endblock %}

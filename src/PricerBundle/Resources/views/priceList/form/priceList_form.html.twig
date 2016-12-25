@@ -1,0 +1,70 @@
+{% extends '@Pricer/priceList/index.html.twig' %}
+
+{% block actionPanel %}
+    <h1>{{ formHeader }}</h1>
+    <form action="{{ action }}" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="name">Название прайслиста: </label>
+            <input type="text" id="name" name="name" value="{{ priceList.name }}" required="required">
+            {% if errors['name'] is defined %}
+                <div class="label label-danger">{{ errors['name'] }}</div>
+            {% endif %}
+        </div>
+        <div>
+            <label for="code">Уникальный код прайслиста: </label>
+            <input type="text" id="code" name="code" value="{{ priceList.code }}" required="required">
+            {% if errors['code'] is defined %}
+                <div class="label label-danger">{{ errors['code'] }}</div>
+            {% endif %}
+        </div>
+        <div>
+            <label for="priceList">Файл прайслиста: </label>
+            <input type="file" id="priceList" name="priceList" required="required">
+        </div>
+        <div>
+            <label for="startColumn">Начальная колонка: </label>
+            <input type="text" id="startColumn" name="startColumn" value="{{ settings['startColumn'] }}" required="required">
+        </div>
+        <div>
+            <label for="endColumn">Конечная колонка: </label>
+            <input type="text" id="endColumn" name="endColumn" value="{{ settings['endColumn'] }}" required="required">
+        </div>
+        <div>
+            <label for="startRow">Строка начала считывания: </label>
+            <input type="text" id="startRow" name="startRow" value="{{ settings['startRow'] }}" required="required">
+        </div>
+        <div>
+            <label for="codeColumn">Колонка с артикулом: </label>
+            <input type="text" id="codeColumn" name="codeColumn" value="{{ settings['codeColumn'] }}" required="required">
+        </div>
+        <div>
+            <label for="secondaryCodeColumn">Вспомогательная колонка с артикулом: </label>
+            <input type="text" id="secondaryCodeColumn" name="secondaryCodeColumn" value="{{ settings['secondaryCodeColumn'] }}" required="required">
+        </div>
+        <div>
+            <label for="brandColumn">Колонка с брендом: </label>
+            <input type="text" id="brandColumn" name="brandColumn" value="{{ settings['brandColumn'] }}" required="required">
+        </div>
+        <div>
+            <label for="nameColumn">Колонка с наименованием</label>
+            <input type="text" id="nameColumn" name="nameColumn" value="{{ settings['nameColumn'] }}" required="required">
+        </div>
+        <div>
+            <label for="priceColumn">Колонка с ценой: </label>
+            <input type="text" id="priceColumn" name="priceColumn" value="{{ settings['priceColumn'] }}" required="required">
+        </div>
+        <div>
+            <label for="quantityColumn">Колонки с количеством(через запятую): </label>
+            <input type="text" id="quantityColumn" name="quantityColumn" value="{{ settings['quantityColumn'] }}" required="required">
+        </div>
+        <div>
+            <label for="currency">Валюта прайса: </label>
+            <input type="text" id="currency" name="currency" value="{{ settings['currency'] }}" required="required">
+        </div>
+        <div>
+            <label for="exchangeRate">Обменный курс по отношению к EUR: </label>
+            <input type="text" id="exchangeRate" name="exchangeRate" value="{{ settings['exchangeRate'] }}" required="required">
+        </div>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}
